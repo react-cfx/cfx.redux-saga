@@ -7,7 +7,7 @@ sagaEffects = require 'redux-saga/effects'
 createSagaMiddleware = (sagas) ->
   saga.apply @, sagas
 dispatch = (action, actionType) ->
-  sagaEffects.put assign {}
+  sagaEffects.put Object.assign {}
   , action
   , type: actionType
 
