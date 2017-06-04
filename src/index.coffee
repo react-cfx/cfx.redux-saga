@@ -9,7 +9,7 @@ dispatch = (action, actionType) ->
   , action
   , type: actionType
 
-module.exports = {
+export default {
   saga
   sagaDefault
   sagaEffects
