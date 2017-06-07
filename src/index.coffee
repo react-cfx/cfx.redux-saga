@@ -1,19 +1,19 @@
-import * as saga from 'redux-saga'
-import { default as sagaEffects } from 'redux-saga/effects'
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import createSagaMiddleware from 'redux-saga'
+import * as sagaEffects from 'redux-saga/effects'
 
-sagaDefault = saga.default
+class SagaMiddleware
+  constructor: ->
+    @middleware = createSagaMiddleware()
+    @
 
-{ createSagaMiddleware } = saga
-sagaMiddleware = createSagaMiddleware()
+  getMidleware: -> @middleware
+
+  runSagas: (sagas) ->
+    for saga in sagas
+      @middleware.run saga
 
 # createSagaMiddleware = (sagas) ->
 #   sagaDefault.apply @, sagas
-
-sagasRun = (sagas) ->
-  for sagaOne in sagas
-    sagaMiddleware.run sagaOne
-  return
 
 dispatch = (action, actionType) ->
   sagaEffects.put Object.assign {}
@@ -21,11 +21,8 @@ dispatch = (action, actionType) ->
   , type: actionType
 
 export default {
-  saga
-  sagaDefault
   sagaEffects
-  # createSagaMiddleware
   dispatch
-  sagaMiddleware
-  sagasRun
+  createSagaMiddleware
+  SagaMiddleware
 }
