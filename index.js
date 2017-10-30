@@ -1,1 +1,6 @@
-module.exports = require('./dest/index.js').default;
+export {
+  sagaEffects,
+  dispatch,
+  createSagaMiddleware,
+  SagaMiddleware
+} from 'src'

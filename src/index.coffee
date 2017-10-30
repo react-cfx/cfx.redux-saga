@@ -20,7 +20,7 @@ dispatch = (action, actionType) ->
   , action
   , type: actionType
 
-export default {
+export {
   sagaEffects
   dispatch
   createSagaMiddleware
